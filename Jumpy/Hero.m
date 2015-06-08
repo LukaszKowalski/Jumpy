@@ -16,13 +16,27 @@
     hero.name = @"hero";
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
 
+    SKSpriteNode *leftEye = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(5, 5)];
+    leftEye.position = CGPointMake(-3, 8);
+    [hero addChild:leftEye];
+    
+    SKSpriteNode *rightEye = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(5, 5)];
+    rightEye.position = CGPointMake(11, 8);
+    [hero addChild:rightEye];
+    
     return hero;
 }
 
-- (void)walkRight
+- (void)jump
 {
-    SKAction *goRight = [SKAction moveByX:10 y:0 duration:0];
-    [self runAction:goRight];
+    [self.physicsBody applyImpulse:CGVectorMake(0, 40)];
+}
+
+- (void)start
+{
+    SKAction *incrementRight = [SKAction moveByX:1 y:0 duration:0.03];
+    SKAction *moveRight = [SKAction repeatActionForever:incrementRight];
+    [self runAction:moveRight];
 }
 
 @end

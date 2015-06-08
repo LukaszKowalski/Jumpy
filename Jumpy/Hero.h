@@ -11,6 +11,7 @@
 @interface Hero : SKSpriteNode
 
 +(id)createHero;
-- (void)walkRight;
+- (void)jump;
+- (void)start;
 
 @end
