@@ -29,12 +29,12 @@
 
 - (void)jump
 {
-    [self.physicsBody applyImpulse:CGVectorMake(0, 40)];
+    [self.physicsBody applyImpulse:CGVectorMake(0, 80)];
 }
 
 - (void)start
 {
-    SKAction *incrementRight = [SKAction moveByX:1 y:0 duration:0.03];
+    SKAction *incrementRight = [SKAction moveByX:1 y:0 duration:0.006];
     SKAction *moveRight = [SKAction repeatActionForever:incrementRight];
     [self runAction:moveRight];
 }

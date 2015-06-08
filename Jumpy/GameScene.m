@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "Hero.h"
+#import "WorldGenerator.h"
 
 @interface GameScene ()
 
@@ -19,6 +20,8 @@
 {
     Hero *hero;
     SKNode *world;
+    WorldGenerator *generator;
+
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -30,17 +33,15 @@
     world = [SKNode node];
     [self addChild:world];
     
-    SKSpriteNode *ground = [SKSpriteNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(self.frame.size.width, 100)];
-    ground.position = CGPointMake(0, -self.frame.size.height/2 + ground.frame.size.height/2);
-    ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ground.size];
-    ground.physicsBody.dynamic = NO;
-    
-    [world addChild:ground];
+    generator = [WorldGenerator generatorWithWorld:world];
+    [self addChild:generator];
+        [generator populate];
     
     hero = [Hero createHero];
     [world addChild:hero];
+    
 }
--(void)start
+-(void)startMoving
 {
     self.isStarted = YES;
     [hero start];
@@ -59,15 +60,35 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     if (!self.isStarted){
-        [hero start];
+        NSLog(@"dupa");
+        [self startMoving];
+    }else if (self.isGameOver){
+        [self clear];
+    }else{
+        [hero jump];
     }
-    [hero jump];
-    
 }
 -(void)didSimulatePhysics
 {
     [self centerOnNode:hero];
+    [self handleGeneration];
+    [self handleCleanup];
 }
+
+-(void)handleGeneration;
+{
+    [world enumerateChildNodesWithName:@"obstacle" usingBlock:^(SKNode *node, BOOL *stop) {
+        if (node.position.x < hero.position.x) {
+            node.name = @"obstacle_cancelled";
+            [generator generate];
+        }
+    }];
+}
+-(void)handleCleanup
+{
+    
+}
+
 -(void)centerOnNode:(SKNode *)node
 {
     CGPoint positionInScene = [self convertPoint:node.position fromNode:node.parent];

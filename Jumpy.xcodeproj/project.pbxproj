@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C33C45771B25F40B001D3773 /* WorldGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C33C45761B25F40B001D3773 /* WorldGenerator.m */; };
 		C37056791B245AFD00DBD390 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C37056781B245AFD00DBD390 /* main.m */; };
 		C370567C1B245AFD00DBD390 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C370567B1B245AFD00DBD390 /* AppDelegate.m */; };
 		C370567F1B245AFD00DBD390 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C370567E1B245AFD00DBD390 /* GameScene.m */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C33C45751B25F40B001D3773 /* WorldGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldGenerator.h; sourceTree = "<group>"; };
+		C33C45761B25F40B001D3773 /* WorldGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldGenerator.m; sourceTree = "<group>"; };
 		C37056731B245AFD00DBD390 /* Jumpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37056771B245AFD00DBD390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C37056781B245AFD00DBD390 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 				C3CC9D7A1B25CAAC00102477 /* Hero.m */,
 				C370567D1B245AFD00DBD390 /* GameScene.h */,
 				C370567E1B245AFD00DBD390 /* GameScene.m */,
+				C33C45751B25F40B001D3773 /* WorldGenerator.h */,
+				C33C45761B25F40B001D3773 /* WorldGenerator.m */,
 				C37056821B245AFD00DBD390 /* GameViewController.h */,
 				C37056831B245AFD00DBD390 /* GameViewController.m */,
 				C37056851B245AFD00DBD390 /* Main.storyboard */,
@@ -234,6 +239,7 @@
 				C37056841B245AFD00DBD390 /* GameViewController.m in Sources */,
 				C370567C1B245AFD00DBD390 /* AppDelegate.m in Sources */,
 				C370567F1B245AFD00DBD390 /* GameScene.m in Sources */,
+				C33C45771B25F40B001D3773 /* WorldGenerator.m in Sources */,
 				C37056791B245AFD00DBD390 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
