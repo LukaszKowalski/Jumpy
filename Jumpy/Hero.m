@@ -12,7 +12,7 @@
 
 + (id)createHero
 {
-    Hero *hero = [Hero spriteNodeWithColor:[UIColor blackColor] size:CGSizeMake(50, 50)];
+    Hero *hero = [Hero spriteNodeWithColor:[UIColor blackColor] size:CGSizeMake(40, 40)];
     hero.name = @"hero";
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
 
@@ -29,7 +29,7 @@
 
 - (void)jump
 {
-    [self.physicsBody applyImpulse:CGVectorMake(0, 80)];
+    [self.physicsBody applyImpulse:CGVectorMake(0, 47)];
 }
 
 - (void)start

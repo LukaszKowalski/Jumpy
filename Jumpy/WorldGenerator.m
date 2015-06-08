@@ -51,11 +51,37 @@
     obstacle.position = CGPointMake(self.currentObstacleX, ground.position.y + ground.frame.size.height/2 + obstacle.frame.size.height/2);
     obstacle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:obstacle.size];
     obstacle.physicsBody.dynamic = NO;
-    obstacle.name = @"obstacle"; 
+    obstacle.name = @"obstacle";
     
     [self.world addChild:obstacle];
     
     self.currentObstacleX += 250;
+}
+- (UIColor *)getRandomColor
+{
+    int rand = arc4random() % 6;
+    
+    UIColor *color;
+    switch (rand) {
+        case 0:
+            color = [UIColor redColor];
+            break;
+        case 1:
+            color = [UIColor greenColor];
+        case 2:
+            color = [UIColor purpleColor];
+        case 3:
+            color = [UIColor blueColor];
+        case 4:
+            color = [UIColor whiteColor];
+        case 5:
+            color = [UIColor yellowColor];
+            break;
+        default:
+            break;
+    }
+    
+    return color;
 }
 
 @end
