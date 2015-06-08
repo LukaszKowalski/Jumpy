@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F28F3AA9-2F87-4F19-A977-F22980727B5F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Jumpy</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E673EB0BBD139793D48F9F70E859DE15C362D438</key>
+		<string>https://github.com/LukaszKowalski/Jumpy.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Jumpy.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E673EB0BBD139793D48F9F70E859DE15C362D438</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/LukaszKowalski/Jumpy.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E673EB0BBD139793D48F9F70E859DE15C362D438</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E673EB0BBD139793D48F9F70E859DE15C362D438</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Jumpy</string>
+		</dict>
+	</array>
+</dict>
+</plist>

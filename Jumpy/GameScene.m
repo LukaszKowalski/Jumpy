@@ -7,39 +7,33 @@
 //
 
 #import "GameScene.h"
+#import "Hero.h"
 
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
+    self.anchorPoint = CGPointMake(0.5, 0.5);
+    self.backgroundColor = [SKColor whiteColor];
+
+    SKSpriteNode *ground = [SKSpriteNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(self.frame.size.width, 100)];
+    ground.position = CGPointMake(0, -self.frame.size.height/2 + ground.frame.size.height/2);
+    ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ground.size];
+    ground.physicsBody.dynamic = NO;
     
-    [self addChild:myLabel];
+    [self addChild:ground];
+    
+    Hero *hero = [Hero createHero];
+    
+    [self addChild:hero];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
+
+    Hero *hero = (Hero *)[self childNodeWithName:@"hero"];
+    [hero walkRight];
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
