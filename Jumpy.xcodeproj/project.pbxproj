@@ -16,6 +16,7 @@
 		C37056891B245AFD00DBD390 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37056881B245AFD00DBD390 /* Images.xcassets */; };
 		C370568C1B245AFD00DBD390 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C370568A1B245AFD00DBD390 /* LaunchScreen.xib */; };
 		C37056981B245AFD00DBD390 /* JumpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C37056971B245AFD00DBD390 /* JumpyTests.m */; };
+		C38BDB801B274CD0003D33E8 /* pointLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C38BDB7F1B274CD0003D33E8 /* pointLabel.m */; };
 		C3CC9D7B1B25CAAC00102477 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CC9D7A1B25CAAC00102477 /* Hero.m */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,8 @@
 		C37056911B245AFD00DBD390 /* JumpyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumpyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37056961B245AFD00DBD390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C37056971B245AFD00DBD390 /* JumpyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpyTests.m; sourceTree = "<group>"; };
+		C38BDB7E1B274CD0003D33E8 /* pointLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pointLabel.h; sourceTree = "<group>"; };
+		C38BDB7F1B274CD0003D33E8 /* pointLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pointLabel.m; sourceTree = "<group>"; };
 		C3CC9D791B25CAAC00102477 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
 		C3CC9D7A1B25CAAC00102477 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +99,8 @@
 				C3CC9D7A1B25CAAC00102477 /* Hero.m */,
 				C370567D1B245AFD00DBD390 /* GameScene.h */,
 				C370567E1B245AFD00DBD390 /* GameScene.m */,
+				C38BDB7E1B274CD0003D33E8 /* pointLabel.h */,
+				C38BDB7F1B274CD0003D33E8 /* pointLabel.m */,
 				C33C45751B25F40B001D3773 /* WorldGenerator.h */,
 				C33C45761B25F40B001D3773 /* WorldGenerator.m */,
 				C37056821B245AFD00DBD390 /* GameViewController.h */,
@@ -238,6 +243,7 @@
 				C3CC9D7B1B25CAAC00102477 /* Hero.m in Sources */,
 				C37056841B245AFD00DBD390 /* GameViewController.m in Sources */,
 				C370567C1B245AFD00DBD390 /* AppDelegate.m in Sources */,
+				C38BDB801B274CD0003D33E8 /* pointLabel.m in Sources */,
 				C370567F1B245AFD00DBD390 /* GameScene.m in Sources */,
 				C33C45771B25F40B001D3773 /* WorldGenerator.m in Sources */,
 				C37056791B245AFD00DBD390 /* main.m in Sources */,
@@ -367,10 +373,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Jumpy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -379,10 +387,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Jumpy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -399,6 +409,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = JumpyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jumpy.app/Jumpy";
@@ -414,6 +425,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = JumpyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jumpy.app/Jumpy";

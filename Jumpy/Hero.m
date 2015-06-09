@@ -10,11 +10,18 @@
 
 @implementation Hero
 
+static const uint32_t heroCategory = 0x1 << 0;
+static const uint32_t obstacleCategory = 0x1 << 1;
+static const uint32_t groundCategory = 0x1 << 2;
+
+
 + (id)createHero
 {
     Hero *hero = [Hero spriteNodeWithColor:[UIColor blackColor] size:CGSizeMake(40, 40)];
     hero.name = @"hero";
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
+    hero.physicsBody.categoryBitMask = heroCategory;
+    hero.physicsBody.contactTestBitMask = obstacleCategory | ~groundCategory;
 
     SKSpriteNode *leftEye = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(5, 5)];
     leftEye.position = CGPointMake(-3, 8);
@@ -37,6 +44,10 @@
     SKAction *incrementRight = [SKAction moveByX:1 y:0 duration:0.006];
     SKAction *moveRight = [SKAction repeatActionForever:incrementRight];
     [self runAction:moveRight];
+}
+- (void)stop
+{
+    
 }
 
 @end

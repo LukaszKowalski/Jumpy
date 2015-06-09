@@ -18,6 +18,10 @@
 
 @implementation WorldGenerator
 
+static const uint32_t obstacleCategory = 0x1 << 1;
+static const uint32_t groundCategory = 0x1 << 2;
+
+
 +(id)generatorWithWorld:(SKNode *)world
 {
     WorldGenerator *generator = [WorldGenerator node];
@@ -41,6 +45,7 @@
     ground.position = CGPointMake(self.currentGroundX, -self.scene.frame.size.height/2 + ground.frame.size.height/2);
     ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ground.size];
     ground.physicsBody.dynamic = NO;
+    ground.physicsBody.categoryBitMask = groundCategory;
     ground.name = @"ground";
     
     [self.world addChild:ground];
@@ -51,6 +56,7 @@
     obstacle.position = CGPointMake(self.currentObstacleX, ground.position.y + ground.frame.size.height/2 + obstacle.frame.size.height/2);
     obstacle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:obstacle.size];
     obstacle.physicsBody.dynamic = NO;
+    obstacle.physicsBody.categoryBitMask = obstacleCategory;
     obstacle.name = @"obstacle";
     
     [self.world addChild:obstacle];

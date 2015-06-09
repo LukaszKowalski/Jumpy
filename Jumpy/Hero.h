@@ -13,5 +13,6 @@
 +(id)createHero;
 - (void)jump;
 - (void)start;
+- (void)stop;
 
 @end
