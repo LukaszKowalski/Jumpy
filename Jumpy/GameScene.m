@@ -25,13 +25,13 @@
 
 }
 
-static NSString *game_font = @"Helvetica";
+static NSString *game_font = @"AmericanTypewriter-Bold";
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     
     self.anchorPoint = CGPointMake(0.5, 0.5);
-    self.backgroundColor = [SKColor blueColor];
+    self.backgroundColor = [SKColor colorWithRed:0.54 green:0.7853 blue:1.0 alpha:1.0];
     self.physicsWorld.contactDelegate = self;
     
     world = [SKNode node];
@@ -49,16 +49,44 @@ static NSString *game_font = @"Helvetica";
     
     [self addChild:pointsLabel];
     
+    SKLabelNode *tapToBeginLabel = [SKLabelNode labelNodeWithFontNamed:game_font];
+    tapToBeginLabel.text = @"Tap to begin";
+    tapToBeginLabel.fontSize = 20;
+    tapToBeginLabel.name = @"tapToBeginLabel";
+    [self addChild:tapToBeginLabel];
+    [self animateWithPulse:tapToBeginLabel];
+    
+    [self loadClouds];
+    
 }
+- (void)loadClouds
+{
+    SKShapeNode *cloud1 = [SKShapeNode node];
+    cloud1.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 65, 100, 40)].CGPath;
+    cloud1.fillColor = [UIColor whiteColor];
+    cloud1.strokeColor = [UIColor blackColor];
+    
+    [world addChild: cloud1];
+    
+    SKShapeNode *cloud2 = [SKShapeNode node];
+    cloud2.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-250, 45, 100, 40)].CGPath;
+    cloud2.fillColor = [UIColor whiteColor];
+    cloud2.strokeColor = [UIColor blackColor];
+    
+    [world addChild: cloud2];
+}
+
 -(void)startMoving
 {
     self.isStarted = YES;
+    [[self childNodeWithName:@"tapToBeginLabel"] removeFromParent];
     [hero start];
 }
 
 -(void)clear
 {
-
+    GameScene *scene = [GameScene sceneWithSize:self.frame.size];
+    [self.view presentScene:scene];
 }
 
 -(void)gameOver
@@ -70,6 +98,12 @@ static NSString *game_font = @"Helvetica";
     gameOverLabel.position = CGPointMake(0, 60);
     [self addChild:gameOverLabel];
     
+    SKLabelNode *tapToResetLabel = [SKLabelNode labelNodeWithFontNamed:game_font];
+    tapToResetLabel.text = @"Tap to reset";
+    tapToResetLabel.fontSize = 20;
+    tapToResetLabel.name = @"tapToResetLabel";
+    [self addChild:tapToResetLabel];
+    [self animateWithPulse:tapToResetLabel];
     [hero stop];
     
 }
@@ -142,4 +176,12 @@ static NSString *game_font = @"Helvetica";
     [self gameOver];
 }
 
+// Animate //
+-(void)animateWithPulse:(SKNode*)node
+{
+    SKAction *disappear = [SKAction fadeAlphaTo:0.0 duration:0.6];
+    SKAction *appear = [SKAction fadeAlphaTo:1.0 duration:0.6];
+    SKAction *pulse = [SKAction sequence:@[disappear, appear]];
+    [node runAction:[SKAction repeatActionForever:pulse]];
+}
 @end

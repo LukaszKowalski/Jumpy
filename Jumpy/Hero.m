@@ -47,7 +47,7 @@ static const uint32_t groundCategory = 0x1 << 2;
 }
 - (void)stop
 {
-    
+    [self removeAllActions];
 }
 
 @end

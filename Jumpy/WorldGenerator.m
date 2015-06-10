@@ -41,7 +41,7 @@ static const uint32_t groundCategory = 0x1 << 2;
 }
 - (void)generate
 {
-    SKSpriteNode *ground = [SKSpriteNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(self.scene.frame.size.width, 100)];
+    SKSpriteNode *ground = [SKSpriteNode spriteNodeWithColor:[UIColor brownColor] size:CGSizeMake(self.scene.frame.size.width, 100)];
     ground.position = CGPointMake(self.currentGroundX, -self.scene.frame.size.height/2 + ground.frame.size.height/2);
     ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ground.size];
     ground.physicsBody.dynamic = NO;
@@ -52,7 +52,7 @@ static const uint32_t groundCategory = 0x1 << 2;
     
     self.currentGroundX += ground.frame.size.width;
     
-    SKSpriteNode *obstacle = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 70)];
+    SKSpriteNode *obstacle = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 60)];
     obstacle.position = CGPointMake(self.currentObstacleX, ground.position.y + ground.frame.size.height/2 + obstacle.frame.size.height/2);
     obstacle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:obstacle.size];
     obstacle.physicsBody.dynamic = NO;
