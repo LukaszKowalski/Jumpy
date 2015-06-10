@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C33C45771B25F40B001D3773 /* WorldGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C33C45761B25F40B001D3773 /* WorldGenerator.m */; };
+		C3538C811B28DEC6002BF0D4 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = C3538C801B28DEC6002BF0D4 /* GameData.m */; };
+		C3538C831B28E647002BF0D4 /* onGameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C3538C821B28E647002BF0D4 /* onGameOver.mp3 */; };
+		C3538C851B28E64B002BF0D4 /* onJump.wav in Resources */ = {isa = PBXBuildFile; fileRef = C3538C841B28E64B002BF0D4 /* onJump.wav */; };
 		C37056791B245AFD00DBD390 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C37056781B245AFD00DBD390 /* main.m */; };
 		C370567C1B245AFD00DBD390 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C370567B1B245AFD00DBD390 /* AppDelegate.m */; };
 		C370567F1B245AFD00DBD390 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C370567E1B245AFD00DBD390 /* GameScene.m */; };
@@ -33,6 +36,10 @@
 /* Begin PBXFileReference section */
 		C33C45751B25F40B001D3773 /* WorldGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldGenerator.h; sourceTree = "<group>"; };
 		C33C45761B25F40B001D3773 /* WorldGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldGenerator.m; sourceTree = "<group>"; };
+		C3538C7F1B28DEC6002BF0D4 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
+		C3538C801B28DEC6002BF0D4 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
+		C3538C821B28E647002BF0D4 /* onGameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onGameOver.mp3; sourceTree = "<group>"; };
+		C3538C841B28E64B002BF0D4 /* onJump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = onJump.wav; sourceTree = "<group>"; };
 		C37056731B245AFD00DBD390 /* Jumpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37056771B245AFD00DBD390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C37056781B245AFD00DBD390 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,6 +106,8 @@
 				C3CC9D7A1B25CAAC00102477 /* Hero.m */,
 				C370567D1B245AFD00DBD390 /* GameScene.h */,
 				C370567E1B245AFD00DBD390 /* GameScene.m */,
+				C3538C7F1B28DEC6002BF0D4 /* GameData.h */,
+				C3538C801B28DEC6002BF0D4 /* GameData.m */,
 				C38BDB7E1B274CD0003D33E8 /* pointLabel.h */,
 				C38BDB7F1B274CD0003D33E8 /* pointLabel.m */,
 				C33C45751B25F40B001D3773 /* WorldGenerator.h */,
@@ -116,6 +125,8 @@
 		C37056761B245AFD00DBD390 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C3538C821B28E647002BF0D4 /* onGameOver.mp3 */,
+				C3538C841B28E64B002BF0D4 /* onJump.wav */,
 				C37056771B245AFD00DBD390 /* Info.plist */,
 				C37056781B245AFD00DBD390 /* main.m */,
 			);
@@ -220,9 +231,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3538C851B28E64B002BF0D4 /* onJump.wav in Resources */,
 				C370568C1B245AFD00DBD390 /* LaunchScreen.xib in Resources */,
 				C37056891B245AFD00DBD390 /* Images.xcassets in Resources */,
 				C37056871B245AFD00DBD390 /* Main.storyboard in Resources */,
+				C3538C831B28E647002BF0D4 /* onGameOver.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3CC9D7B1B25CAAC00102477 /* Hero.m in Sources */,
+				C3538C811B28DEC6002BF0D4 /* GameData.m in Sources */,
 				C37056841B245AFD00DBD390 /* GameViewController.m in Sources */,
 				C370567C1B245AFD00DBD390 /* AppDelegate.m in Sources */,
 				C38BDB801B274CD0003D33E8 /* pointLabel.m in Sources */,

@@ -13,6 +13,8 @@
 @property int number;
 + (id)pointsLabelWithFontNamed:(NSString *)fontName;
 -(void)increment;
+-(void)setPoints:(int)points;
+-(void)reset;
 
 
 @end

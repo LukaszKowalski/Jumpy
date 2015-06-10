@@ -10,6 +10,7 @@
 #import "Hero.h"
 #import "WorldGenerator.h"
 #import "pointLabel.h"
+#import "GameData.h"
 
 @interface GameScene ()
 
@@ -44,10 +45,7 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     hero = [Hero createHero];
     [world addChild:hero];
     
-    pointLabel *pointsLabel = [pointLabel pointsLabelWithFontNamed:game_font];
-    pointsLabel.position = CGPointMake(-200, 100);
-    
-    [self addChild:pointsLabel];
+
     
     SKLabelNode *tapToBeginLabel = [SKLabelNode labelNodeWithFontNamed:game_font];
     tapToBeginLabel.text = @"Tap to begin";
@@ -57,8 +55,36 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     [self animateWithPulse:tapToBeginLabel];
     
     [self loadClouds];
+    [self loadScoreLabels];
+    
+
     
 }
+- (void)loadScoreLabels
+{
+    GameData *data = [GameData data];
+    [data load];
+    
+    pointLabel *pointsLabel = [pointLabel pointsLabelWithFontNamed:game_font];
+    pointsLabel.position = CGPointMake(-200, 100);
+    
+    [self addChild:pointsLabel];
+    
+    pointLabel *highScore = [pointLabel pointsLabelWithFontNamed:game_font];
+    highScore.position = CGPointMake(200, 100);
+    [highScore setPoints:data.highscore];
+    highScore.name = @"highScore";
+    
+    [self addChild:highScore];
+    
+    SKLabelNode *bestLabel = [SKLabelNode labelNodeWithFontNamed:game_font];
+    bestLabel.position = CGPointMake(-38, 0);
+    bestLabel.text = @"best";
+    bestLabel.fontSize = 16.0;
+    [highScore addChild:bestLabel];
+    
+}
+
 - (void)loadClouds
 {
     SKShapeNode *cloud1 = [SKShapeNode node];
@@ -106,6 +132,25 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     [self animateWithPulse:tapToResetLabel];
     [hero stop];
     
+    [self runAction:[SKAction playSoundFileNamed:@"onGameOver.mp3" waitForCompletion:NO]];
+    
+    [self updateHighscore];
+    
+}
+- (void)updateHighscore
+{
+    pointLabel *pointsLabel = (pointLabel *)[self childNodeWithName:@"pointsLabel"];
+    pointLabel *highScore = (pointLabel *)[self childNodeWithName:@"highScore"];
+    
+    if (pointsLabel.number > highScore.number ){
+        [highScore setPoints:pointsLabel.number];
+        
+        GameData *data = [GameData data];
+        data.highscore = pointsLabel.number;
+        
+        [data save];
+    }
+                                         
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -173,7 +218,11 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
+    if ([contact.bodyA.node.name isEqualToString: @"ground"] || [contact.bodyB.node.name isEqualToString: @"ground"]){
+        [hero land];
+    }else{    
     [self gameOver];
+    }
 }
 
 // Animate //

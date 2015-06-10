@@ -8,6 +8,10 @@
 
 #import "Hero.h"
 
+@interface Hero ()
+@property BOOL isJumping;
+@end
+
 @implementation Hero
 
 static const uint32_t heroCategory = 0x1 << 0;
@@ -21,7 +25,7 @@ static const uint32_t groundCategory = 0x1 << 2;
     hero.name = @"hero";
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
     hero.physicsBody.categoryBitMask = heroCategory;
-    hero.physicsBody.contactTestBitMask = obstacleCategory | ~groundCategory;
+    hero.physicsBody.contactTestBitMask = obstacleCategory | groundCategory;
 
     SKSpriteNode *leftEye = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(5, 5)];
     leftEye.position = CGPointMake(-3, 8);
@@ -36,7 +40,12 @@ static const uint32_t groundCategory = 0x1 << 2;
 
 - (void)jump
 {
-    [self.physicsBody applyImpulse:CGVectorMake(0, 47)];
+    if (!self.isJumping)
+    {
+        [self.physicsBody applyImpulse:CGVectorMake(0, 47)];
+        self.isJumping = YES;
+        [self runAction:[SKAction playSoundFileNamed:@"onJump.wav" waitForCompletion:NO]];
+    }
 }
 
 - (void)start
@@ -48,6 +57,10 @@ static const uint32_t groundCategory = 0x1 << 2;
 - (void)stop
 {
     [self removeAllActions];
+}
+- (void)land
+{
+    self.isJumping = NO;
 }
 
 @end
