@@ -36,10 +36,10 @@ static const uint32_t groundCategory = 0x1 << 2;
 - (void)populate
 {
     for (int i = 0; i < 3 ; i++) {
-        [self generate];
+        [self generateLevelOne];
     }
 }
-- (void)generate
+- (void)generateLevelOne
 {
     SKSpriteNode *ground = [SKSpriteNode spriteNodeWithColor:[UIColor brownColor] size:CGSizeMake(self.scene.frame.size.width, 100)];
     ground.position = CGPointMake(self.currentGroundX, -self.scene.frame.size.height/2 + ground.frame.size.height/2);
@@ -58,6 +58,14 @@ static const uint32_t groundCategory = 0x1 << 2;
     obstacle.physicsBody.dynamic = NO;
     obstacle.physicsBody.categoryBitMask = obstacleCategory;
     obstacle.name = @"obstacle";
+    
+    SKSpriteNode *bonus = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(22, 22)];
+    bonus.position = CGPointMake(0,0);
+    bonus.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:obstacle.size];
+    bonus.physicsBody.dynamic = NO;
+    bonus.physicsBody.categoryBitMask = obstacleCategory;
+    bonus.name = @"bonus";
+
     
     [self.world addChild:obstacle];
     

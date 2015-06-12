@@ -11,7 +11,7 @@
 @interface WorldGenerator : SKNode
 
 +(id)generatorWithWorld:(SKNode *)world;
--(void)generate;
+-(void)generateLevelOne;
 -(void)populate;
 
 @end

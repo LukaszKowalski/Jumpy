@@ -20,6 +20,7 @@
 		C370568C1B245AFD00DBD390 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C370568A1B245AFD00DBD390 /* LaunchScreen.xib */; };
 		C37056981B245AFD00DBD390 /* JumpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C37056971B245AFD00DBD390 /* JumpyTests.m */; };
 		C38BDB801B274CD0003D33E8 /* pointLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C38BDB7F1B274CD0003D33E8 /* pointLabel.m */; };
+		C3A3CD761B29F23D00CE4029 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A3CD751B29F23D00CE4029 /* heart.png */; };
 		C3CC9D7B1B25CAAC00102477 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CC9D7A1B25CAAC00102477 /* Hero.m */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		C37056971B245AFD00DBD390 /* JumpyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpyTests.m; sourceTree = "<group>"; };
 		C38BDB7E1B274CD0003D33E8 /* pointLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pointLabel.h; sourceTree = "<group>"; };
 		C38BDB7F1B274CD0003D33E8 /* pointLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pointLabel.m; sourceTree = "<group>"; };
+		C3A3CD751B29F23D00CE4029 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		C3CC9D791B25CAAC00102477 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
 		C3CC9D7A1B25CAAC00102477 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 		C37056761B245AFD00DBD390 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C3A3CD751B29F23D00CE4029 /* heart.png */,
 				C3538C821B28E647002BF0D4 /* onGameOver.mp3 */,
 				C3538C841B28E64B002BF0D4 /* onJump.wav */,
 				C37056771B245AFD00DBD390 /* Info.plist */,
@@ -234,6 +237,7 @@
 				C3538C851B28E64B002BF0D4 /* onJump.wav in Resources */,
 				C370568C1B245AFD00DBD390 /* LaunchScreen.xib in Resources */,
 				C37056891B245AFD00DBD390 /* Images.xcassets in Resources */,
+				C3A3CD761B29F23D00CE4029 /* heart.png in Resources */,
 				C37056871B245AFD00DBD390 /* Main.storyboard in Resources */,
 				C3538C831B28E647002BF0D4 /* onGameOver.mp3 in Resources */,
 			);

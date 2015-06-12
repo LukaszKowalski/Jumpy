@@ -10,6 +10,8 @@
 
 @interface Hero : SKSpriteNode
 
+@property int heroLifeLeft;
+
 +(id)createHero;
 - (void)jump;
 - (void)start;

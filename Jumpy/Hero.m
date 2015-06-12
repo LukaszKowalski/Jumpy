@@ -10,6 +10,8 @@
 
 @interface Hero ()
 @property BOOL isJumping;
+
+
 @end
 
 @implementation Hero
@@ -26,6 +28,7 @@ static const uint32_t groundCategory = 0x1 << 2;
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
     hero.physicsBody.categoryBitMask = heroCategory;
     hero.physicsBody.contactTestBitMask = obstacleCategory | groundCategory;
+    hero.heroLifeLeft = 3;
 
     SKSpriteNode *leftEye = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(5, 5)];
     leftEye.position = CGPointMake(-3, 8);

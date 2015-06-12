@@ -17,6 +17,7 @@
 @property BOOL isStarted;
 @property BOOL isGameOver;
 
+
 @end
 @implementation GameScene
 {
@@ -40,9 +41,10 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     
     generator = [WorldGenerator generatorWithWorld:world];
     [self addChild:generator];
-        [generator populate];
+    [generator populate];
     
     hero = [Hero createHero];
+
     [world addChild:hero];
     
 
@@ -57,21 +59,39 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     [self loadClouds];
     [self loadScoreLabels];
     
+    {
+        [self loadLifes];
+    }
 
-    
+    NSLog(@"%d", hero.heroLifeLeft);
 }
+- (void)loadLifes
+{
+    int heartXPosition = - 250;
+
+    for (int i=0; i < hero.heroLifeLeft; i++){
+    SKSpriteNode *heart = [SKSpriteNode spriteNodeWithImageNamed:@"heart"];
+    heart.size = CGSizeMake(100, 50);
+    heart.position = CGPointMake(heartXPosition, 120);
+    heartXPosition += 50;
+    heart.name = @"heart";
+    
+    [self addChild:heart];
+    }
+}
+
 - (void)loadScoreLabels
 {
     GameData *data = [GameData data];
     [data load];
     
     pointLabel *pointsLabel = [pointLabel pointsLabelWithFontNamed:game_font];
-    pointsLabel.position = CGPointMake(-200, 100);
+    pointsLabel.position = CGPointMake(0, 120);
     
     [self addChild:pointsLabel];
     
     pointLabel *highScore = [pointLabel pointsLabelWithFontNamed:game_font];
-    highScore.position = CGPointMake(200, 100);
+    highScore.position = CGPointMake(200, 120);
     [highScore setPoints:data.highscore];
     highScore.name = @"highScore";
     
@@ -117,6 +137,8 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
 
 -(void)gameOver
 {
+    if (hero.heroLifeLeft == 0) {
+    
     self.isGameOver = YES;
     
     SKLabelNode *gameOverLabel = [SKLabelNode labelNodeWithFontNamed:game_font];
@@ -135,7 +157,8 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     [self runAction:[SKAction playSoundFileNamed:@"onGameOver.mp3" waitForCompletion:NO]];
     
     [self updateHighscore];
-    
+        
+    }
 }
 - (void)updateHighscore
 {
@@ -156,7 +179,6 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     if (!self.isStarted){
-        NSLog(@"dupa");
         [self startMoving];
     }else if (self.isGameOver){
         [self clear];
@@ -171,6 +193,12 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     [self handleGeneration];
     [self handleCleanup];
 
+}
+-(void)handleHearts
+{
+    [self enumerateChildNodesWithName:@"heart" usingBlock:^(SKNode *node, BOOL *stop) {
+        [node removeFromParent];
+    }];
 }
 
 -(void)handlePoints
@@ -187,7 +215,7 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     [world enumerateChildNodesWithName:@"obstacle" usingBlock:^(SKNode *node, BOOL *stop) {
         if (node.position.x < hero.position.x) {
             node.name = @"obstacle_cancelled";
-            [generator generate];
+            [generator generateLevelOne];
         }
     }];
 }
@@ -220,8 +248,11 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
 {
     if ([contact.bodyA.node.name isEqualToString: @"ground"] || [contact.bodyB.node.name isEqualToString: @"ground"]){
         [hero land];
-    }else{    
-    [self gameOver];
+    }else{
+        hero.heroLifeLeft = hero.heroLifeLeft -  1;
+        [self handleHearts];
+        [self loadLifes];
+        [self gameOver];
     }
 }
 
