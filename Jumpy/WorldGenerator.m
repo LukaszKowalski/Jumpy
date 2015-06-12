@@ -7,12 +7,14 @@
 //
 
 #import "WorldGenerator.h"
+#import "bonus.h"
 
 @interface WorldGenerator ()
 
 @property double currentGroundX;
 @property double currentObstacleX;
 @property SKNode *world;
+@property bonus *bonusLife;
 
 @end
 
@@ -59,12 +61,6 @@ static const uint32_t groundCategory = 0x1 << 2;
     obstacle.physicsBody.categoryBitMask = obstacleCategory;
     obstacle.name = @"obstacle";
     
-    SKSpriteNode *bonus = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(22, 22)];
-    bonus.position = CGPointMake(0,0);
-    bonus.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:obstacle.size];
-    bonus.physicsBody.dynamic = NO;
-    bonus.physicsBody.categoryBitMask = obstacleCategory;
-    bonus.name = @"bonus";
 
     
     [self.world addChild:obstacle];

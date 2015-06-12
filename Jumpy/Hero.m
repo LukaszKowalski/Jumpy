@@ -47,7 +47,7 @@ static const uint32_t groundCategory = 0x1 << 2;
     {
         [self.physicsBody applyImpulse:CGVectorMake(0, 47)];
         self.isJumping = YES;
-        [self runAction:[SKAction playSoundFileNamed:@"onJump.wav" waitForCompletion:NO]];
+//        [self runAction:[SKAction playSoundFileNamed:@"onJump.wav" waitForCompletion:NO]];
     }
 }
 

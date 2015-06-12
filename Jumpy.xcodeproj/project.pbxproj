@@ -22,6 +22,7 @@
 		C38BDB801B274CD0003D33E8 /* pointLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C38BDB7F1B274CD0003D33E8 /* pointLabel.m */; };
 		C3A3CD761B29F23D00CE4029 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A3CD751B29F23D00CE4029 /* heart.png */; };
 		C3CC9D7B1B25CAAC00102477 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CC9D7A1B25CAAC00102477 /* Hero.m */; };
+		C3CF875A1B2B25A500CA3AA2 /* bonus.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CF87591B2B25A500CA3AA2 /* bonus.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		C3A3CD751B29F23D00CE4029 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		C3CC9D791B25CAAC00102477 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
 		C3CC9D7A1B25CAAC00102477 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
+		C3CF87581B2B25A500CA3AA2 /* bonus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bonus.h; sourceTree = "<group>"; };
+		C3CF87591B2B25A500CA3AA2 /* bonus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bonus.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 				C38BDB7F1B274CD0003D33E8 /* pointLabel.m */,
 				C33C45751B25F40B001D3773 /* WorldGenerator.h */,
 				C33C45761B25F40B001D3773 /* WorldGenerator.m */,
+				C3CF87581B2B25A500CA3AA2 /* bonus.h */,
+				C3CF87591B2B25A500CA3AA2 /* bonus.m */,
 				C37056821B245AFD00DBD390 /* GameViewController.h */,
 				C37056831B245AFD00DBD390 /* GameViewController.m */,
 				C37056851B245AFD00DBD390 /* Main.storyboard */,
@@ -263,6 +268,7 @@
 				C370567C1B245AFD00DBD390 /* AppDelegate.m in Sources */,
 				C38BDB801B274CD0003D33E8 /* pointLabel.m in Sources */,
 				C370567F1B245AFD00DBD390 /* GameScene.m in Sources */,
+				C3CF875A1B2B25A500CA3AA2 /* bonus.m in Sources */,
 				C33C45771B25F40B001D3773 /* WorldGenerator.m in Sources */,
 				C37056791B245AFD00DBD390 /* main.m in Sources */,
 			);

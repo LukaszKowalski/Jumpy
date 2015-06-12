@@ -11,11 +11,13 @@
 #import "WorldGenerator.h"
 #import "pointLabel.h"
 #import "GameData.h"
+#import "bonus.h"
 
 @interface GameScene ()
 
 @property BOOL isStarted;
 @property BOOL isGameOver;
+@property bonus *bonusLife;
 
 
 @end
@@ -58,15 +60,15 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     
     [self loadClouds];
     [self loadScoreLabels];
+    [self loadLifes];
     
-    {
-        [self loadLifes];
-    }
+    self.bonusLife = [bonus nodeWithFileNamed:@"bonus"];
 
-    NSLog(@"%d", hero.heroLifeLeft);
 }
+
 - (void)loadLifes
 {
+    
     int heartXPosition = - 250;
 
     for (int i=0; i < hero.heroLifeLeft; i++){
@@ -154,7 +156,7 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
     [self animateWithPulse:tapToResetLabel];
     [hero stop];
     
-    [self runAction:[SKAction playSoundFileNamed:@"onGameOver.mp3" waitForCompletion:NO]];
+//    [self runAction:[SKAction playSoundFileNamed:@"onGameOver.mp3" waitForCompletion:NO]];
     
     [self updateHighscore];
         
@@ -233,6 +235,15 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
         }
     }];
 }
+- (void)getBonus
+{
+    NSLog(@"getBonus");
+    hero.heroLifeLeft = hero.heroLifeLeft + 1;
+    [self handleHearts];
+    [self loadLifes];
+    
+
+}
 
 -(void)centerOnNode:(SKNode *)node
 {
@@ -246,9 +257,32 @@ static NSString *game_font = @"AmericanTypewriter-Bold";
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
+    NSLog(@"didBegin");
     if ([contact.bodyA.node.name isEqualToString: @"ground"] || [contact.bodyB.node.name isEqualToString: @"ground"]){
         [hero land];
-    }else{
+    }else if([contact.bodyA.node.name isEqualToString:@"bonus"] && [contact.bodyB.node.name isEqualToString:@"hero"] && !self.bonusLife.isTouched){
+        
+        
+        NSLog(@"p1 %lul", (unsigned long)contact.bodyA.node.hash);
+        [contact.bodyA.node removeFromParent];
+        NSLog(@"p2 %ol", contact.bodyA.node.parent);
+        
+//        NSLog(@"bonus");
+//        [world enumerateChildNodesWithName:@"bonus" usingBlock:^(SKNode *node, BOOL *stop) {
+//            NSLog(@"%@", node.name);
+//            [node removeFromParent];
+        
+//        }];
+        self.bonusLife.isTouched = YES;
+        [self getBonus];
+        
+    }else if([contact.bodyA.node.name isEqualToString:@"hero"] && [contact.bodyB.node.name isEqualToString:@"bonus"]){
+//        [world enumerateChildNodesWithName:@"bonus" usingBlock:^(SKNode *node, BOOL *stop) {
+//            NSLog(@"%@", node.name);
+//            [node removeFromParent];
+    }
+    
+    else{
         hero.heroLifeLeft = hero.heroLifeLeft -  1;
         [self handleHearts];
         [self loadLifes];
