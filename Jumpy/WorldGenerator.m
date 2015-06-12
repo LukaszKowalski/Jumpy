@@ -13,6 +13,7 @@
 
 @property double currentGroundX;
 @property double currentObstacleX;
+@property double currentBonusX;
 @property SKNode *world;
 @property bonus *bonusLife;
 
@@ -29,6 +30,7 @@ static const uint32_t groundCategory = 0x1 << 2;
     WorldGenerator *generator = [WorldGenerator node];
     generator.currentGroundX = 0;
     generator.currentObstacleX = 400;
+    generator.currentBonusX = 100;
     generator.world = world;
     
 
@@ -37,7 +39,7 @@ static const uint32_t groundCategory = 0x1 << 2;
 
 - (void)populate
 {
-    for (int i = 0; i < 3 ; i++) {
+    for (int i = 0; i < 3; i++) {
         [self generateLevelOne];
     }
 }
@@ -61,11 +63,14 @@ static const uint32_t groundCategory = 0x1 << 2;
     obstacle.physicsBody.categoryBitMask = obstacleCategory;
     obstacle.name = @"obstacle";
     
-
+    self.bonusLife = [bonus createBonus];
+    self.bonusLife.position = CGPointMake(self.currentBonusX,0);
     
+    [self.world addChild:self.bonusLife];
     [self.world addChild:obstacle];
     
     self.currentObstacleX += 250;
+    self.currentBonusX += 1500;
 }
 - (UIColor *)getRandomColor
 {
