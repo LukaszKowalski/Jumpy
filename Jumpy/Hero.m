@@ -19,6 +19,7 @@
 static const uint32_t heroCategory = 0x1 << 0;
 static const uint32_t obstacleCategory = 0x1 << 1;
 static const uint32_t groundCategory = 0x1 << 2;
+static const uint32_t bonusCategory = 0x1 << 2;
 
 
 + (id)createHero
@@ -27,7 +28,9 @@ static const uint32_t groundCategory = 0x1 << 2;
     hero.name = @"hero";
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
     hero.physicsBody.categoryBitMask = heroCategory;
-    hero.physicsBody.contactTestBitMask = obstacleCategory | groundCategory;
+    hero.physicsBody.contactTestBitMask = obstacleCategory | groundCategory | bonusCategory;
+    hero.physicsBody.collisionBitMask = bonusCategory | obstacleCategory;
+    hero.physicsBody.allowsRotation = NO;
     hero.heroLifeLeft = 3;
 
     SKSpriteNode *leftEye = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(5, 5)];
